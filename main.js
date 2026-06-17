@@ -36,7 +36,14 @@ document.addEventListener("visibilitychange", () => {
         Object.values(audios).forEach(audio => audio.pause());
         resetValues();
     }
-})
+});
+
+window.addEventListener("load", () => {
+    Object.values(images).forEach(image => {
+        const img = new Image();
+        img.src = image;
+    });
+});
 
 const meowBtn = document.getElementById("meow");
 meowBtn.addEventListener("click", () => {
