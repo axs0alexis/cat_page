@@ -31,6 +31,12 @@ function resetValues () {
     title.textContent = "Gatito"
 }
 
+document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+        Object.values(audios).forEach(audio => audio.pause());
+        resetValues();
+    }
+})
 
 const meowBtn = document.getElementById("meow");
 meowBtn.addEventListener("click", () => {
