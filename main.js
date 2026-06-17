@@ -10,6 +10,14 @@ const audios = {
     "muhehehe": new Audio("assets/sounds/muhehehe.mp3")
 }
 
+const images = {
+    "meow": "assets/images/meow.jpg",
+    "laughter": "assets/images/laughter.webp",
+    "scuba": "assets/images/scuba.webp",
+    "bouncy": "assets/images/bouncy.webp",
+    "muhehehe": "assets/images/muhehehe.webp"
+}
+
 function playMeme (audio, memeURL) {
     Object.values(audios).forEach(audio => audio.pause());
 
@@ -19,7 +27,7 @@ function playMeme (audio, memeURL) {
 }
 
 function resetValues () {
-    mainCatElem.src = "assets/images/meow.jpg"
+    mainCatElem.src = images.meow
     title.textContent = "Gatito"
 }
 
@@ -27,7 +35,7 @@ function resetValues () {
 const meowBtn = document.getElementById("meow");
 meowBtn.addEventListener("click", () => {
     title.textContent = "Gatito"
-    playMeme(audios.meow, "assets/images/meow.jpg");
+    playMeme(audios.meow, images.meow);
 });
 
 
@@ -36,7 +44,7 @@ const laughterBtn = document.getElementById("laughter");
 
 laughterBtn.addEventListener("click", () => {
     title.textContent = "Gato naranja burlandose"
-    playMeme(audios.laughter, "assets/images/laughter.webp");
+    playMeme(audios.laughter, images.laughter);
 });
 audios.laughter.addEventListener("ended", resetValues);
 
@@ -46,7 +54,7 @@ const scubaBtn = document.getElementById("scuba");
 
 scubaBtn.addEventListener("click", () => {
     title.textContent = "Scuba Cat Dance"
-    playMeme(audios.scuba, "assets/images/scuba.webp");
+    playMeme(audios.scuba, images.scuba);
 });
 audios.scuba.addEventListener("ended", resetValues);
 
@@ -55,7 +63,7 @@ const bouncyBtn = document.getElementById("bouncy");
 
 bouncyBtn.addEventListener("click", () => {
     title.textContent = "Gato Boing Boing"
-    playMeme(audios.bouncy, "assets/images/bouncy.webp")
+    playMeme(audios.bouncy, images.bouncy)
 })
 audios.bouncy.addEventListener("ended", resetValues)
 
