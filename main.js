@@ -36,7 +36,7 @@ const laughterBtn = document.getElementById("laughter");
 
 laughterBtn.addEventListener("click", () => {
     title.textContent = "Gato naranja burlandose"
-    playMeme(audios.laughter, "assets/images/laughter.gif");
+    playMeme(audios.laughter, "assets/images/laughter.webp");
 });
 audios.laughter.addEventListener("ended", resetValues);
 
@@ -46,7 +46,7 @@ const scubaBtn = document.getElementById("scuba");
 
 scubaBtn.addEventListener("click", () => {
     title.textContent = "Scuba Cat Dance"
-    playMeme(audios.scuba, "assets/images/scuba.gif");
+    playMeme(audios.scuba, "assets/images/scuba.webp");
 });
 audios.scuba.addEventListener("ended", resetValues);
 
@@ -65,6 +65,6 @@ const muheheheBtn = document.getElementById("muhehehe");
 
 muheheheBtn.addEventListener("click", () => {
     title.textContent = "Mue HeHeHe"
-    playMeme(audios.muhehehe, "assets/images/muhehehe.gif")
+    playMeme(audios.muhehehe, "assets/images/muhehehe.webp")
 })
 audios.muhehehe.addEventListener("ended", resetValues)
