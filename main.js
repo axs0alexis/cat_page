@@ -3,11 +3,11 @@ const title = document.getElementById("title-card")
 const mainCatElem = document.getElementById("cat-img")
 
 const audios = {
-    "meow": new Audio("assets/sounds/meow.mp3"),
-    "laughter": new Audio("assets/sounds/laughter.mp3"),
-    "scuba": new Audio("assets/sounds/scuba.mp3"),
-    "bouncy": new Audio("assets/sounds/bouncy.mp3"),
-    "muhehehe": new Audio("assets/sounds/muhehehe.mp3")
+    "meow": new Audio("assets/audios/meow.mp3"),
+    "laughter": new Audio("assets/audios/laughter.mp3"),
+    "scuba": new Audio("assets/audios/scuba.mp3"),
+    "bouncy": new Audio("assets/audios/bouncy.mp3"),
+    "muhehehe": new Audio("assets/audios/muhehehe.mp3")
 }
 
 const images = {
