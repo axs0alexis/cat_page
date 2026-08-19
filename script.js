@@ -7,7 +7,8 @@ const audios = {
     "laughter": new Audio("assets/audios/laughter.mp3"),
     "scuba": new Audio("assets/audios/scuba.mp3"),
     "bouncy": new Audio("assets/audios/bouncy.mp3"),
-    "muhehehe": new Audio("assets/audios/muhehehe.mp3")
+    "muhehehe": new Audio("assets/audios/muhehehe.mp3"),
+    "damdam": new Audio("assets/audios/damdam.mp3")
 }
 
 const images = {
@@ -15,7 +16,7 @@ const images = {
     "laughter": "assets/images/laughter.webp",
     "scuba": "assets/images/scuba.webp",
     "bouncy": "assets/images/bouncy.webp",
-    "muhehehe": "assets/images/muhehehe.webp"
+    "damdam": "assets/images/damdam.webp"
 }
 
 function playMeme (audio, memeURL) {
@@ -89,3 +90,11 @@ muheheheBtn.addEventListener("click", () => {
     playMeme(audios.muhehehe, "assets/images/muhehehe.webp")
 })
 audios.muhehehe.addEventListener("ended", resetValues)
+
+const damdamBtn = document.getElementById("damdam");
+
+damdamBtn.addEventListener("click", () => {
+    title.textContent = "Dam Dam"
+    playMeme(audios.damdam, "assets/images/damdam.webp")
+})
+audios.damdam.addEventListener("ended", resetValues)
