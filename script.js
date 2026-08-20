@@ -48,5 +48,5 @@ function playMeme (url, text) {
 catVideo.addEventListener('ended', () => {
     catVideo.style.display = "none";
     catImg.style.display = "block";
-    title.textContent = "Gatito";
+    title.textContent = "Gato normal";
 });
