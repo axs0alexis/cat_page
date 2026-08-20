@@ -41,6 +41,13 @@ h3 {
     object-fit: cover; 
 }
 
+video {
+    border-radius: 1rem;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    display: none;
+}
+
 .row-buttons {
     display: flex;
     flex-wrap: wrap;

@@ -2,99 +2,51 @@
 const title = document.getElementById("title-card")
 const mainCatElem = document.getElementById("cat-img")
 
-const audios = {
-    "meow": new Audio("assets/audios/meow.mp3"),
-    "laughter": new Audio("assets/audios/laughter.mp3"),
-    "scuba": new Audio("assets/audios/scuba.mp3"),
-    "bouncy": new Audio("assets/audios/bouncy.mp3"),
-    "muhehehe": new Audio("assets/audios/muhehehe.mp3"),
-    "damdam": new Audio("assets/audios/damdam.mp3")
-}
+const cacheVideos = {};
+const UrlVideos = [
+    'assets/videos/laughter.mp4',
+    'assets/videos/scuba.mp4',
+    'assets/videos/bouncy.mp4',
+    'assets/videos/muhehehe.mp4',
+    'assets/videos/damdam.mp4',
+];
 
-const images = {
-    "meow": "assets/images/meow.jpg",
-    "laughter": "assets/images/laughter.webp",
-    "scuba": "assets/images/scuba.webp",
-    "bouncy": "assets/images/bouncy.webp",
-    "damdam": "assets/images/damdam.webp"
-}
-
-function playMeme (audio, memeURL) {
-    Object.values(audios).forEach(audio => audio.pause());
-
-    if (memeURL) mainCatElem.src = memeURL;
-    audio.currentTime = 0;
-    audio.play();
-}
-
-function resetValues () {
-    mainCatElem.src = images.meow
-    title.textContent = "Gatito"
-}
-
-document.addEventListener("visibilitychange", () => {
-    if (document.hidden) {
-        Object.values(audios).forEach(audio => audio.pause());
-        resetValues();
+async function preLoadVideos(url) {
+    try {
+        const response = await fetch(url);
+        const blobFile = await response.blob();
+        
+        const localUrl = URL.createObjectURL(blobFile);
+        
+        cacheVideos[url] = localUrl;
+    } catch (error) {
+        console.error(error);
     }
+}
+
+window.addEventListener("load", async () => {
+    await Promise.all(UrlVideos.map(url => preLoadVideos(url)));
 });
 
-window.addEventListener("load", () => {
-    Object.values(images).forEach(image => {
-        const img = new Image();
-        img.src = image;
-    });
+const catVideo = document.getElementById("cat-video");
+const catImg = document.getElementById("cat-img");
+
+function playMeme (url, text) {
+    if (cacheVideos[url]) {
+        catVideo.src = cacheVideos[url];
+        
+    } else {
+        catVideo.src = url;
+    }
+
+    title.textContent = text;
+    catImg.style.display = "none";
+    catVideo.style.display = "block";
+    catVideo.play();
+}
+
+catVideo.addEventListener('ended', () => {
+    catVideo.style.display = "none";
+    catImg.style.display = "block";
+    title.textContent = "Gatito";
 });
-
-const meowBtn = document.getElementById("meow");
-meowBtn.addEventListener("click", () => {
-    title.textContent = "Gatito"
-    playMeme(audios.meow, images.meow);
-});
-
-
-
-const laughterBtn = document.getElementById("laughter");
-
-laughterBtn.addEventListener("click", () => {
-    title.textContent = "Gato naranja burlandose"
-    playMeme(audios.laughter, images.laughter);
-});
-audios.laughter.addEventListener("ended", resetValues);
-
-
-
-const scubaBtn = document.getElementById("scuba");
-
-scubaBtn.addEventListener("click", () => {
-    title.textContent = "Scuba Cat Dance"
-    playMeme(audios.scuba, images.scuba);
-});
-audios.scuba.addEventListener("ended", resetValues);
-
-
-const bouncyBtn = document.getElementById("bouncy");
-
-bouncyBtn.addEventListener("click", () => {
-    title.textContent = "Gato Boing Boing"
-    playMeme(audios.bouncy, images.bouncy)
-})
-audios.bouncy.addEventListener("ended", resetValues)
-
-
-
-const muheheheBtn = document.getElementById("muhehehe");
-
-muheheheBtn.addEventListener("click", () => {
-    title.textContent = "Mue HeHeHe"
-    playMeme(audios.muhehehe, "assets/images/muhehehe.webp")
-})
-audios.muhehehe.addEventListener("ended", resetValues)
-
-const damdamBtn = document.getElementById("damdam");
-
-damdamBtn.addEventListener("click", () => {
-    title.textContent = "Dam Dam"
-    playMeme(audios.damdam, "assets/images/damdam.webp")
-})
-audios.damdam.addEventListener("ended", resetValues)

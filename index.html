@@ -9,15 +9,15 @@
     </head>
     <body>
         <div class="card">
-            <img id="cat-img" src="assets/images/meow.jpg" alt="Meme de gato">
+            <img id="cat-img" src="assets/images/cat.jpg" alt="Meme de gato">
+            <video id="cat-video"></video>
             <h3 id="title-card">Gatito</h3>
             <div class="row-buttons">
-                <button id="meow" class="cat-btn">MIAU</button>
-                <button id="laughter" class="cat-btn">JAJA</button>
-                <button id="scuba" class="cat-btn">Loba</button>
-                <button id="bouncy" class="cat-btn">Boing</button>
-                <button id="muhehehe" class="cat-btn">Muehehe</button>
-                <button id="damdam" class="cat-btn">Dam Dam</button>
+                <button id="laughter" class="cat-btn" onclick="playMeme('assets/videos/laughter.mp4', 'JAJAJA')">JAJA</button>
+                <button id="scuba" class="cat-btn" onclick="playMeme('assets/videos/scuba.mp4', 'Loba Loba')">Loba</button>
+                <button id="bouncy" class="cat-btn" onclick="playMeme('assets/videos/bouncy.mp4', 'Boing Boing')">Boing</button>
+                <button id="muhehehe" class="cat-btn" onclick="playMeme('assets/videos/muhehehe.mp4', 'Muhehehe')">Muehehe</button>
+                <button id="damdam" class="cat-btn" onclick="playMeme('assets/videos/damdam.mp4', 'Dam Dam Didi')">Dam Dam</button>
             </div>
         </div>
     </body>
