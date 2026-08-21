@@ -8,6 +8,7 @@ const UrlVideos = [
     'assets/videos/scuba.mp4',
     'assets/videos/bouncy.mp4',
     'assets/videos/muhehehe.mp4',
+    'assets/videos/ruffles.mp4',
     'assets/videos/damdam.mp4',
 ];
 
