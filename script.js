@@ -30,19 +30,26 @@ window.addEventListener("load", async () => {
     await Promise.all(UrlVideos.map(url => preLoadVideos(url)));
 });
 
-function playMeme (url, text) {
-    if (cacheVideos[url]) {
-        catVideo.src = cacheVideos[url];
-        
-    } else {
-        catVideo.src = url;
-    }
+const buttonsContainer = document.getElementById("meme-buttons-container");
 
-    title.textContent = text;
-    catImg.style.display = "none";
-    catVideo.style.display = "block";
-    catVideo.play();
-}
+buttonsContainer.addEventListener("click", (event) => {
+    if (event.target.classList.contains("cat-btn")) {
+        const url = event.target.dataset.url;
+        const text = event.target.dataset.text;
+        
+        if (cacheVideos[url]) {
+            catVideo.src = cacheVideos[url];
+        } else {
+            catVideo.src = url;
+        }
+
+        title.textContent = text;
+        catImg.style.display = "none";
+        catVideo.style.display = "block";
+        catVideo.currentTime = 0; 
+        catVideo.play();
+    }
+});
 
 catVideo.addEventListener('ended', () => {
     catVideo.style.display = "none";
